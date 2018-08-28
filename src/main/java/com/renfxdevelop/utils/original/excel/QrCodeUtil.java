@@ -2,7 +2,6 @@ package com.renfxdevelop.utils.original.excel;
 
 
 
-import com.renfxdevelop.utils.model.QrCode;
 
 import java.util.Date;
 import java.util.Random;
@@ -101,4 +100,37 @@ public class QrCodeUtil {
 //        System.out.println(gensOtp(new Date().getTime()));
 
     }
+    public static class QrCode {
+        private int id; //店铺或者用户id
+        private Date date;//日期 默认当前日期
+        private String otp;//用于解密时验证
+
+        public String getOtp() {
+            return otp;
+        }
+
+        public void setOtp(String otp) {
+            this.otp = otp;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
+
+    }
+
 }
+
