@@ -1,11 +1,12 @@
-package com.renfxdevelop.utils.original.request;
+package com.rfxdevelop.utils.original.request;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RequestParamUtil {
-    public static Map<String, String> getParams(HttpServletRequest request) {
+    public static Map<String, String> getParams(ServletRequest request) {
         Map<String, String> map = new HashMap();
         Map<String, String[]> paramMap = request.getParameterMap();
         try {

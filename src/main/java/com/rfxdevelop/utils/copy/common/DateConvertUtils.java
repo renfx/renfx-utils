@@ -1,4 +1,5 @@
-package com.renfxdevelop.utils.copy.common;
+package com.rfxdevelop.utils.copy.common;
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,6 +13,7 @@ import java.util.Date;
 public class DateConvertUtils {
 
     public static final String FORMAT_SECOND = "yyyy-MM-dd hh:mm:ss";
+    public static final String FORMAT_NOT_BR = "yyyy-MM-dd_hh:mm:ss";
 	public static Date parse(String dateString,String dateFormat) {
 		return parse(dateString, dateFormat,Date.class);
 	}

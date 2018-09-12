@@ -1,4 +1,4 @@
-package com.renfxdevelop.utils.copy.common;
+package com.rfxdevelop.utils.copy.common;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

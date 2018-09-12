@@ -1,4 +1,4 @@
-package com.renfxdevelop.utils.copy.sql;
+package com.rfxdevelop.utils.copy.sql;
 
 import java.util.regex.Pattern;
 

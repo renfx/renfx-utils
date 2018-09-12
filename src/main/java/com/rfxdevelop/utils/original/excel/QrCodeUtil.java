@@ -1,4 +1,4 @@
-package com.renfxdevelop.utils.original.excel;
+package com.rfxdevelop.utils.original.excel;
 
 
 
@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by renfxdevelop on 2017/5/10.
+ * Created by rfxdevelop on 2017/5/10.
  */
 public class QrCodeUtil {
     private static String key = "45d135153d13sdfi(*(*&32jijd";
