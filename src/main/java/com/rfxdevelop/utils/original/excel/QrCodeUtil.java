@@ -16,17 +16,20 @@ public class QrCodeUtil {
     public static int timeRange= 1800;//30分钟
 
     /**
-     * 生成opt 精度到秒
+     * 生成动态口令 精度到秒
      * @param time 毫秒数
+     * @param num 递归次数
      * @return otp
      */
-    public static String gensOtp(long time){
+    public static String gensOtp(long time,int num){
         String timeStr= time/1000+key;
         String hashCodeOtp = String.valueOf(Math.abs(timeStr.hashCode()));
-
-        String otp = "";
+        if(num==1) return null;
+        String otp;
         if(hashCodeOtp.length()>=5){
             otp = hashCodeOtp.substring(hashCodeOtp.length()-5,hashCodeOtp.length());
+        }else{
+            otp = gensOtp(time+1000,--num);
         }
         return otp ;
     }
@@ -39,14 +42,13 @@ public class QrCodeUtil {
     public static String encode(QrCode qrCode){
         Random random = new Random();
         int n = random.nextInt(9)+1;
+        long code = qrCode.getId();
+        long time = (qrCode.getDate() == null ? new Date() : qrCode.getDate()).getTime();
+        String otp = gensOtp(time,4);
         StringBuilder builder = new StringBuilder();
-        builder.append(qrCode.getId());
-        long code = Long.parseLong(builder.toString());
-        String otp = gensOtp((qrCode.getDate() == null ? new Date() : qrCode.getDate()).getTime());
-        builder = new StringBuilder();
         builder.append(code * n).append(otp).append(n);
         qrCode.setOtp(otp);
-        return String.valueOf(builder.toString());
+        return builder.toString();
     }
 
     /**
@@ -73,8 +75,8 @@ public class QrCodeUtil {
 
 
     /**
-     * 校验otp
-     * @param otp
+     * 校验动态口令
+     * @param otp 动态口令
      * @return 是否校验通过
      */
     public static boolean checkOtp(String otp){
@@ -82,23 +84,19 @@ public class QrCodeUtil {
     }
 
     /**
-     * 校验otp
+     * 校验动态口令
      * @param otp
      * @return 是否校验通过
      */
     public static boolean checkOtp(String otp ,int timeRange){
         long time = new Date().getTime();
         for (long timeGens = time/1000-timeRange; timeGens < time/1000+timeRange ; timeGens++) {
-            String optGens = gensOtp(timeGens * 1000);
+            String optGens = gensOtp(timeGens * 1000,4);
             if(optGens.equals(otp)){
                 return true;
             }
         }
         return false;
-    }
-    public static void main(String[] args) {
-//        System.out.println(gensOtp(new Date().getTime()));
-
     }
     public static class QrCode {
         private int id; //店铺或者用户id
