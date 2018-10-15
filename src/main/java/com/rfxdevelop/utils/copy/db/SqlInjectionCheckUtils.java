@@ -1,4 +1,4 @@
-package com.rfxdevelop.utils.copy.db.check;
+package com.rfxdevelop.utils.copy.db;
 
 import java.util.regex.Pattern;
 
