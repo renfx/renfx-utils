@@ -1,4 +1,4 @@
-package com.rfxdevelop.utils.copy.sql;
+package com.rfxdevelop.utils.copy.db.check;
 
 import java.util.regex.Pattern;
 
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * SQL注入检查
  * copy from https://blog.csdn.net/borbore/article/details/69396249
  */
-public class SqlCheckUtils {
+public class SqlInjectionCheckUtils {
     /**正则表达式**/
     private static String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|"
             + "(\\b(select|update|union|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";

@@ -1,7 +1,6 @@
-package com.rfxdevelop.utils.original.request;
+package com.rfxdevelop.utils.original;
 
 import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 

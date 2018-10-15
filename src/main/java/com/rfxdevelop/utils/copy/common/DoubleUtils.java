@@ -68,14 +68,18 @@ public class DoubleUtils {
 	 * 
 	 * @param v1
 	 *            *
-	 * @param v2
+	 * @param v
 	 *            *
 	 * @return Double
 	 */
-	public static Double add(Double v1, Double v2) {
+	public static Double add(Double v1, Double... v) {
 		BigDecimal b1 = new BigDecimal(v1.toString());
-		BigDecimal b2 = new BigDecimal(v2.toString());
-		return new Double(b1.add(b2).doubleValue());
+		for (Double v2 : v) {
+			BigDecimal b2 = new BigDecimal(v2.toString());
+			Double res = new Double(b1.add(b2).doubleValue());
+			b1 = new BigDecimal(res);
+		}
+		return b1.doubleValue();
 	}
 
 
@@ -87,8 +91,8 @@ public class DoubleUtils {
 	 */
 	public static Double sub(Double v1,Double... v) {
 		BigDecimal b1 = new BigDecimal(v1.toString());
-		for (Double double1 : v) {
-			BigDecimal b2 = new BigDecimal(double1.toString());
+		for (Double v2 : v) {
+			BigDecimal b2 = new BigDecimal(v2.toString());
 			Double res = new Double(b1.subtract(b2).doubleValue());
 			b1 = new BigDecimal(res);
 		}
@@ -104,10 +108,14 @@ public class DoubleUtils {
 	 *            *
 	 * @return Double
 	 */
-	public static Double mul(Double v1, Double v2) {
+	public static Double mul(Double v1, Double... v) {
 		BigDecimal b1 = new BigDecimal(v1.toString());
-		BigDecimal b2 = new BigDecimal(v2.toString());
-		return new Double(b1.multiply(b2).doubleValue());
+		for (Double v2 : v) {
+			BigDecimal b2 = new BigDecimal(v2.toString());
+			Double res = new Double(b1.multiply(b2).doubleValue());
+			b1 = new BigDecimal(res);
+		}
+		return b1.doubleValue();
 	}
 
 	/**
@@ -115,15 +123,20 @@ public class DoubleUtils {
 	 * 
 	 * @param v1
 	 *            *
-	 * @param v2
+	 * @param v
 	 *            *
 	 * @return Double
 	 */
-	public static Double div(Double v1, Double v2) {
-		if(0d==v2)return 0d;
+	public static Double div(Double v1, Double... v) {
+
 		BigDecimal b1 = new BigDecimal(v1.toString());
-		BigDecimal b2 = new BigDecimal(v2.toString());
-		return new Double(b1.divide(b2, DEF_DIV_SCALE, BigDecimal.ROUND_HALF_UP).doubleValue());
+		for (Double v2 : v) {
+			if(0d==v2)return 0d;
+			BigDecimal b2 = new BigDecimal(v2.toString());
+			Double res = new Double(b1.divide(b2, DEF_DIV_SCALE, BigDecimal.ROUND_HALF_UP).doubleValue());
+			b1 = new BigDecimal(res);
+		}
+		return b1.doubleValue();
 	}
 
 	/**
