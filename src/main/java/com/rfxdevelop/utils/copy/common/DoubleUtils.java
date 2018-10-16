@@ -5,7 +5,9 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-
+/**
+ * copy from com.wealthlake.common.util
+ */
 public class DoubleUtils {
 
 	private static final int DEF_DIV_SCALE = 10;
@@ -104,7 +106,7 @@ public class DoubleUtils {
 	 * 
 	 * @param v1
 	 *            *
-	 * @param v2
+	 * @param v
 	 *            *
 	 * @return Double
 	 */

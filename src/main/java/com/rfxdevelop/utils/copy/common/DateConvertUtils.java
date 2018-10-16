@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * copy from com.wealthlake.common.util.date
  * @author badqiu
  */
 public class DateConvertUtils {
